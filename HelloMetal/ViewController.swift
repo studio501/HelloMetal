@@ -88,11 +88,52 @@ class ViewController: UIViewController {
       
       // 2
       let mdlMesh =
-        MDLMesh(sphereWithExtent: [fx, fy, 0.75], segments: [100, 100], inwardNormals: false, geometryType: .triangles, allocator: allocator)
+//        MDLMesh(sphereWithExtent: [fx, fy, 0.75], segments: [100, 100], inwardNormals: false, geometryType: .triangles, allocator: allocator)
+        MDLMesh(coneWithExtent: [1,1,1], segments: [10,10], inwardNormals: false, cap: true, geometryType: .triangles, allocator: allocator)
         
     
     
 //        MDLMesh(hemisphereWithExtent: [fx,fy,0.5], segments: [100,100], inwardNormals: false, cap: false, geometryType: .triangles, allocator: allocator)
+    
+    do{
+      // export the cone
+      
+      // begin export code
+      // 1
+      let asset = MDLAsset()
+      asset.add(mdlMesh)
+      // 2
+      let fileExtension = "obj"
+      guard MDLAsset.canExportFileExtension(fileExtension) else {
+        fatalError("Can't export a .\(fileExtension) format")
+      }
+      // 3
+      do {
+        
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        print(path)
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent("primitive.\(fileExtension)") {
+//            let filePath = pathComponent.path
+//            let fileManager = FileManager.default
+//            if fileManager.fileExists(atPath: filePath) {
+//                print("FILE AVAILABLE")
+//            } else {
+//                print("FILE NOT AVAILABLE")
+//            }
+          try asset.export(to: pathComponent)
+        } else {
+            print("FILE PATH NOT AVAILABLE")
+        }
+        
+//        let url = playgroundSharedDataDirectory.appendingPathComponent(
+//          "primitive.\(fileExtension)")
+//        try asset.export(to: url)
+      } catch {
+        fatalError("Error \(error.localizedDescription)")
+      }
+      // end export code
+    }
       
       // 3
       mesh = try? MTKMesh(mesh: mdlMesh, device: device)
@@ -115,6 +156,21 @@ class ViewController: UIViewController {
     pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
 
     commandQueue = device.makeCommandQueue()
+    
+    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    let url = NSURL(fileURLWithPath: path)
+    if let pathComponent = url.appendingPathComponent("Shaders.metal") {
+        let filePath = pathComponent.path
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: filePath) {
+            print("FILE AVAILABLE")
+        } else {
+            print("FILE NOT AVAILABLE")
+        }
+    } else {
+        print("FILE PATH NOT AVAILABLE")
+    }
+    
     
     
     timer = CADisplayLink(target: self, selector: #selector(gameloop))
@@ -145,6 +201,7 @@ class ViewController: UIViewController {
     guard let submesh = mesh.submeshes.first else {
       fatalError()
     }
+    renderEncoder.setTriangleFillMode(.lines)
     renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: 0)
     renderEncoder.endEncoding()
     

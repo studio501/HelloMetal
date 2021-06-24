@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3362112684DB5700D5CB21 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620C2684DB5700D5CB21 /* train.obj */; };
+		0E3362122684DB5700D5CB21 /* train.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620D2684DB5700D5CB21 /* train.mtl */; };
+		0E3362132684DB5700D5CB21 /* train.blend in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620E2684DB5700D5CB21 /* train.blend */; };
+		0E3362142684DB5700D5CB21 /* mushroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620F2684DB5700D5CB21 /* mushroom.obj */; };
+		0E3362152684DB5700D5CB21 /* mushroom.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E3362102684DB5700D5CB21 /* mushroom.mtl */; };
 		0EA21CAE256EA06700420F46 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0EA21CAD256EA06700420F46 /* Shaders.metal */; };
 		4374F560213C0EC0006ABEA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374F55F213C0EC0006ABEA0 /* ViewController.swift */; };
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E33620C2684DB5700D5CB21 /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.obj; path = "../../../met-materials/02-3d-models/projects/resources/train.obj"; sourceTree = "<group>"; };
+		0E33620D2684DB5700D5CB21 /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.mtl; path = "../../../met-materials/02-3d-models/projects/resources/train.mtl"; sourceTree = "<group>"; };
+		0E33620E2684DB5700D5CB21 /* train.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = train.blend; path = "../../../met-materials/02-3d-models/projects/resources/train.blend"; sourceTree = "<group>"; };
+		0E33620F2684DB5700D5CB21 /* mushroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.obj; path = "../../../met-materials/02-3d-models/projects/resources/mushroom.obj"; sourceTree = "<group>"; };
+		0E3362102684DB5700D5CB21 /* mushroom.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.mtl; path = "../../../met-materials/02-3d-models/projects/resources/mushroom.mtl"; sourceTree = "<group>"; };
 		0EA21CAD256EA06700420F46 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		4374F55F213C0EC0006ABEA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +47,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E33620B2684DB4400D5CB21 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				0E3362102684DB5700D5CB21 /* mushroom.mtl */,
+				0E33620F2684DB5700D5CB21 /* mushroom.obj */,
+				0E33620E2684DB5700D5CB21 /* train.blend */,
+				0E33620D2684DB5700D5CB21 /* train.mtl */,
+				0E33620C2684DB5700D5CB21 /* train.obj */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		D2A5F1F71F4A9143005CD714 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +80,7 @@
 		D2A5F2021F4A9144005CD714 /* HelloMetal */ = {
 			isa = PBXGroup;
 			children = (
+				0E33620B2684DB4400D5CB21 /* resource */,
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				4374F55F213C0EC0006ABEA0 /* ViewController.swift */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
@@ -128,9 +151,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E3362112684DB5700D5CB21 /* train.obj in Resources */,
+				0E3362152684DB5700D5CB21 /* mushroom.mtl in Resources */,
+				0E3362122684DB5700D5CB21 /* train.mtl in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
 				5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */,
+				0E3362132684DB5700D5CB21 /* train.blend in Resources */,
 				D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */,
+				0E3362142684DB5700D5CB21 /* mushroom.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
