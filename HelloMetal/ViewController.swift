@@ -29,6 +29,9 @@
 import UIKit
 import Metal
 
+//import PlaygroundSuport
+import MetalKit
+
 class ViewController: UIViewController {
   // property
   var device: MTLDevice!
@@ -36,6 +39,7 @@ class ViewController: UIViewController {
   var vertexBuffer: MTLBuffer!
   var pipelineState: MTLRenderPipelineState!
   var commandQueue: MTLCommandQueue!
+  var mesh: MTKMesh!
   
   
   
@@ -57,32 +61,55 @@ class ViewController: UIViewController {
     metalLayer.framebufferOnly = true    // 4
     metalLayer.frame = view.layer.frame  // 5
     view.layer.addSublayer(metalLayer)   // 6
+    let size1 = self.view.frame.size
     
-    let len: Float = 0.8
-    //
-    let vertexData: [Float] = [
-       0.0,  len, 0.0,
-      -len, -len, 0.0,
-      len, -len, 0.0,
+//    do {
+//      let len: Float = 0.8
+//      //
+//      let vertexData: [Float] = [
+//         0.0,  len, 0.0,
+//        -len, -len, 0.0,
+//        len, -len, 0.0,
+//
+//        0.5,  0.5, 0.0,
+//        0.8,  0.5, 0.0,
+//        0.8,  0.8, 0.0
+//      ]
+//
+//      let dataSize = vertexData.count * MemoryLayout.size(ofValue: vertexData[0]) // 1
+//      vertexBuffer = device.makeBuffer(bytes: vertexData, length: dataSize, options: []) // 2
+//    }
+    let radius : Float = Float(self.view.frame.size.width) / 2
+    let fx = radius / Float(self.view.frame.size.width)
+    let fy = radius / Float(self.view.frame.size.height)
+
+      // 1
+      let allocator = MTKMeshBufferAllocator(device: device)
       
-      0.5,  0.5, 0.0,
-      0.8,  0.5, 0.0,
-      0.8,  0.8, 0.0
-    ]
+      // 2
+      let mdlMesh =
+        MDLMesh(sphereWithExtent: [fx, fy, 0.75], segments: [100, 100], inwardNormals: false, geometryType: .triangles, allocator: allocator)
+        
     
-    let dataSize = vertexData.count * MemoryLayout.size(ofValue: vertexData[0]) // 1
-    vertexBuffer = device.makeBuffer(bytes: vertexData, length: dataSize, options: []) // 2
+    
+//        MDLMesh(hemisphereWithExtent: [fx,fy,0.5], segments: [100,100], inwardNormals: false, cap: false, geometryType: .triangles, allocator: allocator)
+      
+      // 3
+      mesh = try? MTKMesh(mesh: mdlMesh, device: device)
+      vertexBuffer = mesh!.vertexBuffers[0].buffer
     
     // 1
     let defaultLibrary = device.makeDefaultLibrary()!
-    let fragmentProgram = defaultLibrary.makeFunction(name: "basic_fragment")
-    let vertexProgram = defaultLibrary.makeFunction(name: "basic_vertex")
+    let fragmentProgram = defaultLibrary.makeFunction(name: "fragment_main")
+    let vertexProgram = defaultLibrary.makeFunction(name: "vertex_main")
         
     // 2
     let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
     pipelineStateDescriptor.vertexFunction = vertexProgram
     pipelineStateDescriptor.fragmentFunction = fragmentProgram
     pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+    pipelineStateDescriptor.vertexDescriptor = MTKMetalVertexDescriptorFromModelIO(mesh!.vertexDescriptor)
+    
         
     // 3
     pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
@@ -114,19 +141,17 @@ class ViewController: UIViewController {
       .makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
     renderEncoder.setRenderPipelineState(pipelineState)
     renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-    renderEncoder
-      .drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6, instanceCount: 2)
+//    renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6, instanceCount: 2)
+    guard let submesh = mesh.submeshes.first else {
+      fatalError()
+    }
+    renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: 0)
     renderEncoder.endEncoding()
     
     
     commandBuffer.present(drawable)
     commandBuffer.commit()
-    
-    let st = commandBuffer.status
-    commandBuffer.waitUntilCompleted()
-    let s2 = commandBuffer.status
-    
-    let a = 100
+
   }
 
   @objc func gameloop() {

@@ -29,14 +29,15 @@
 #include <metal_stdlib>
 using namespace metal;
 
-vertex float4 basic_vertex(                           // 1
-  const device packed_float3* vertex_array [[ buffer(0) ]], // 2
-  unsigned int vid [[ vertex_id ]]) {                 // 3
-  return float4(vertex_array[vid], 1.0);              // 4
+struct VertexIn {
+  float4 position [[ attribute(0) ]];
+};
+
+vertex float4 vertex_main(const VertexIn vertex_in [[ stage_in ]]) {
+  return vertex_in.position;
 }
 
-
-fragment half4 basic_fragment() { // 1
-  return half4(1.0,1.0,0.0,0.5);              // 2
+fragment float4 fragment_main() {
+  return float4(1, 0, 0, 1);
 }
 
