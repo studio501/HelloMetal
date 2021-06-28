@@ -32,6 +32,20 @@ import Metal
 //import PlaygroundSuport
 import MetalKit
 
+
+class Primitive{
+  static func makeCube(device: MTLDevice, size: Float, uiview: UIView) -> MDLMesh{
+    let allocator = MTKMeshBufferAllocator(device: device)
+    
+    let fx = size
+    let tx = fx * Float(uiview.frame.size.width)
+    let fy = tx / Float(uiview.frame.size.height)
+    
+    let mesh = MDLMesh(boxWithExtent: [fx, fy, fx], segments: [1,1,1], inwardNormals: false, geometryType: .triangles, allocator: allocator)
+    return mesh
+  }
+}
+
 class ViewController: UIViewController {
   // property
   var device: MTLDevice!
@@ -44,6 +58,7 @@ class ViewController: UIViewController {
   
   
   var timer: CADisplayLink!
+  var _time: Float = 0
 
 
   
@@ -85,55 +100,75 @@ class ViewController: UIViewController {
 
       // 1
       let allocator = MTKMeshBufferAllocator(device: device)
+    
+    
+    //
+    guard let assetURL = Bundle.main.url(forResource: "train", withExtension: ".obj") else {
+      fatalError()
+    }
+    
+    let vertexDescriptor = MTLVertexDescriptor()
+    vertexDescriptor.attributes[0].format = .float3
+    vertexDescriptor.attributes[0].offset = 0
+    vertexDescriptor.attributes[0].bufferIndex = 0
+    
+    vertexDescriptor.layouts[0].stride = MemoryLayout<SIMD3<Float>>.stride
+    let meshDescriptor = MTKModelIOVertexDescriptorFromMetal(vertexDescriptor)
+    (meshDescriptor.attributes[0] as! MDLVertexAttribute).name = MDLVertexAttributePosition
+    
+    let asset = MDLAsset(url: assetURL, vertexDescriptor: meshDescriptor, bufferAllocator: allocator)
+    
       
       // 2
       let mdlMesh =
 //        MDLMesh(sphereWithExtent: [fx, fy, 0.75], segments: [100, 100], inwardNormals: false, geometryType: .triangles, allocator: allocator)
-        MDLMesh(coneWithExtent: [1,1,1], segments: [10,10], inwardNormals: false, cap: true, geometryType: .triangles, allocator: allocator)
+//        MDLMesh(coneWithExtent: [1,1,1], segments: [10,10], inwardNormals: false, cap: true, geometryType: .triangles, allocator: allocator)
+        asset.childObjects(of: MDLMesh.self).first as! MDLMesh
+//        Primitive.makeCube(device: device, size: 0.5, uiview: self.view)
         
     
     
 //        MDLMesh(hemisphereWithExtent: [fx,fy,0.5], segments: [100,100], inwardNormals: false, cap: false, geometryType: .triangles, allocator: allocator)
     
-    do{
-      // export the cone
-      
-      // begin export code
-      // 1
-      let asset = MDLAsset()
-      asset.add(mdlMesh)
-      // 2
-      let fileExtension = "obj"
-      guard MDLAsset.canExportFileExtension(fileExtension) else {
-        fatalError("Can't export a .\(fileExtension) format")
-      }
-      // 3
-      do {
-        
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        print(path)
-        let url = NSURL(fileURLWithPath: path)
-        if let pathComponent = url.appendingPathComponent("primitive.\(fileExtension)") {
-//            let filePath = pathComponent.path
-//            let fileManager = FileManager.default
-//            if fileManager.fileExists(atPath: filePath) {
-//                print("FILE AVAILABLE")
-//            } else {
-//                print("FILE NOT AVAILABLE")
-//            }
-          try asset.export(to: pathComponent)
-        } else {
-            print("FILE PATH NOT AVAILABLE")
-        }
-        
-//        let url = playgroundSharedDataDirectory.appendingPathComponent(
-//          "primitive.\(fileExtension)")
-//        try asset.export(to: url)
-      } catch {
-        fatalError("Error \(error.localizedDescription)")
-      }
-      // end export code
-    }
+//    do{
+//      // export the cone
+//
+//      // begin export code
+//      // 1
+//      let asset = MDLAsset()
+//      asset.add(mdlMesh)
+//      // 2
+//      let fileExtension = "obj"
+//      guard MDLAsset.canExportFileExtension(fileExtension) else {
+//        fatalError("Can't export a .\(fileExtension) format")
+//      }
+//      // 3
+//      do {
+//
+//        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+//        print(path)
+//        let url = NSURL(fileURLWithPath: path)
+//        if let pathComponent = url.appendingPathComponent("primitive.\(fileExtension)") {
+////            let filePath = pathComponent.path
+////            let fileManager = FileManager.default
+////            if fileManager.fileExists(atPath: filePath) {
+////                print("FILE AVAILABLE")
+////            } else {
+////                print("FILE NOT AVAILABLE")
+////            }
+//          try asset.export(to: pathComponent)
+//        } else {
+//            print("FILE PATH NOT AVAILABLE")
+//        }
+//
+////        let url = playgroundSharedDataDirectory.appendingPathComponent(
+////          "primitive.\(fileExtension)")
+////        try asset.export(to: url)
+//      } catch {
+//        fatalError("Error \(error.localizedDescription)")
+//      }
+//      // end export code
+//    }
       
       // 3
       mesh = try? MTKMesh(mesh: mdlMesh, device: device)
@@ -181,6 +216,7 @@ class ViewController: UIViewController {
   
   func render() {
     // TODO
+    _time += 0.016
     guard let drawable = metalLayer?.nextDrawable() else { return }
     let renderPassDescriptor = MTLRenderPassDescriptor()
     renderPassDescriptor.colorAttachments[0].texture = drawable.texture
@@ -197,12 +233,22 @@ class ViewController: UIViewController {
       .makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
     renderEncoder.setRenderPipelineState(pipelineState)
     renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+    var currentTime = sin(_time)
+    renderEncoder.setVertexBytes(&currentTime, length: MemoryLayout<Float>.stride, index: 1)
 //    renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6, instanceCount: 2)
-    guard let submesh = mesh.submeshes.first else {
-      fatalError()
-    }
+    
+//    guard let submesh = mesh.submeshes.first else {
+//      fatalError()
+//    }
+//    renderEncoder.setTriangleFillMode(.lines)
+//    renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: 0)
+    
     renderEncoder.setTriangleFillMode(.lines)
-    renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: 0)
+    for submesh in mesh.submeshes{
+      renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
+    }
+    
+    
     renderEncoder.endEncoding()
     
     

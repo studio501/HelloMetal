@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E3362112684DB5700D5CB21 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620C2684DB5700D5CB21 /* train.obj */; };
-		0E3362122684DB5700D5CB21 /* train.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620D2684DB5700D5CB21 /* train.mtl */; };
-		0E3362132684DB5700D5CB21 /* train.blend in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620E2684DB5700D5CB21 /* train.blend */; };
-		0E3362142684DB5700D5CB21 /* mushroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E33620F2684DB5700D5CB21 /* mushroom.obj */; };
-		0E3362152684DB5700D5CB21 /* mushroom.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E3362102684DB5700D5CB21 /* mushroom.mtl */; };
+		0401737A2689B81A0095CD43 /* untitled.obj in Resources */ = {isa = PBXBuildFile; fileRef = 040173782689B8190095CD43 /* untitled.obj */; };
+		0401737B2689B81A0095CD43 /* untitled.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 040173792689B8190095CD43 /* untitled.mtl */; };
+		04E7BF0A2685D55F00D83955 /* mushroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF052685D55E00D83955 /* mushroom.obj */; };
+		04E7BF0B2685D55F00D83955 /* train.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF062685D55E00D83955 /* train.mtl */; };
+		04E7BF0C2685D55F00D83955 /* mushroom.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF072685D55E00D83955 /* mushroom.mtl */; };
+		04E7BF0D2685D55F00D83955 /* train.blend in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF082685D55E00D83955 /* train.blend */; };
+		04E7BF0E2685D55F00D83955 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF092685D55F00D83955 /* train.obj */; };
 		0EA21CAE256EA06700420F46 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0EA21CAD256EA06700420F46 /* Shaders.metal */; };
 		4374F560213C0EC0006ABEA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374F55F213C0EC0006ABEA0 /* ViewController.swift */; };
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
@@ -21,11 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E33620C2684DB5700D5CB21 /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.obj; path = "../../../met-materials/02-3d-models/projects/resources/train.obj"; sourceTree = "<group>"; };
-		0E33620D2684DB5700D5CB21 /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.mtl; path = "../../../met-materials/02-3d-models/projects/resources/train.mtl"; sourceTree = "<group>"; };
-		0E33620E2684DB5700D5CB21 /* train.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = train.blend; path = "../../../met-materials/02-3d-models/projects/resources/train.blend"; sourceTree = "<group>"; };
-		0E33620F2684DB5700D5CB21 /* mushroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.obj; path = "../../../met-materials/02-3d-models/projects/resources/mushroom.obj"; sourceTree = "<group>"; };
-		0E3362102684DB5700D5CB21 /* mushroom.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.mtl; path = "../../../met-materials/02-3d-models/projects/resources/mushroom.mtl"; sourceTree = "<group>"; };
+		040173782689B8190095CD43 /* untitled.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = untitled.obj; sourceTree = "<group>"; };
+		040173792689B8190095CD43 /* untitled.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = untitled.mtl; sourceTree = "<group>"; };
+		04E7BF052685D55E00D83955 /* mushroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.obj; path = "../../../../met-materials/02-3d-models/projects/resources/mushroom.obj"; sourceTree = "<group>"; };
+		04E7BF062685D55E00D83955 /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.mtl; path = "../../../../met-materials/02-3d-models/projects/resources/train.mtl"; sourceTree = "<group>"; };
+		04E7BF072685D55E00D83955 /* mushroom.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.mtl; path = "../../../../met-materials/02-3d-models/projects/resources/mushroom.mtl"; sourceTree = "<group>"; };
+		04E7BF082685D55E00D83955 /* train.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = train.blend; path = "../../../../met-materials/02-3d-models/projects/resources/train.blend"; sourceTree = "<group>"; };
+		04E7BF092685D55F00D83955 /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.obj; path = "../../../../met-materials/02-3d-models/projects/resources/train.obj"; sourceTree = "<group>"; };
 		0EA21CAD256EA06700420F46 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		4374F55F213C0EC0006ABEA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,14 +51,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040173772689B7E40095CD43 /* 3dmodels */ = {
+			isa = PBXGroup;
+			children = (
+				040173792689B8190095CD43 /* untitled.mtl */,
+				040173782689B8190095CD43 /* untitled.obj */,
+			);
+			path = 3dmodels;
+			sourceTree = "<group>";
+		};
+		04E7BF042685D53200D83955 /* 02-3d-models */ = {
+			isa = PBXGroup;
+			children = (
+				04E7BF072685D55E00D83955 /* mushroom.mtl */,
+				04E7BF052685D55E00D83955 /* mushroom.obj */,
+				04E7BF082685D55E00D83955 /* train.blend */,
+				04E7BF062685D55E00D83955 /* train.mtl */,
+				04E7BF092685D55F00D83955 /* train.obj */,
+			);
+			name = "02-3d-models";
+			sourceTree = "<group>";
+		};
 		0E33620B2684DB4400D5CB21 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				0E3362102684DB5700D5CB21 /* mushroom.mtl */,
-				0E33620F2684DB5700D5CB21 /* mushroom.obj */,
-				0E33620E2684DB5700D5CB21 /* train.blend */,
-				0E33620D2684DB5700D5CB21 /* train.mtl */,
-				0E33620C2684DB5700D5CB21 /* train.obj */,
+				040173772689B7E40095CD43 /* 3dmodels */,
+				04E7BF042685D53200D83955 /* 02-3d-models */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -151,14 +173,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E3362112684DB5700D5CB21 /* train.obj in Resources */,
-				0E3362152684DB5700D5CB21 /* mushroom.mtl in Resources */,
-				0E3362122684DB5700D5CB21 /* train.mtl in Resources */,
+				04E7BF0E2685D55F00D83955 /* train.obj in Resources */,
+				0401737A2689B81A0095CD43 /* untitled.obj in Resources */,
+				04E7BF0D2685D55F00D83955 /* train.blend in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
+				0401737B2689B81A0095CD43 /* untitled.mtl in Resources */,
+				04E7BF0B2685D55F00D83955 /* train.mtl in Resources */,
 				5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */,
-				0E3362132684DB5700D5CB21 /* train.blend in Resources */,
 				D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */,
-				0E3362142684DB5700D5CB21 /* mushroom.obj in Resources */,
+				04E7BF0A2685D55F00D83955 /* mushroom.obj in Resources */,
+				04E7BF0C2685D55F00D83955 /* mushroom.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +336,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.studio501.hm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -328,7 +352,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.studio501.hm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
