@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		0401737A2689B81A0095CD43 /* untitled.obj in Resources */ = {isa = PBXBuildFile; fileRef = 040173782689B8190095CD43 /* untitled.obj */; };
 		0401737B2689B81A0095CD43 /* untitled.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 040173792689B8190095CD43 /* untitled.mtl */; };
+		040B4B3B268C268D003F97F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
+		040B4B3E268C268D003F97F7 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF092685D55F00D83955 /* train.obj */; };
+		040B4B3F268C268D003F97F7 /* untitled.obj in Resources */ = {isa = PBXBuildFile; fileRef = 040173782689B8190095CD43 /* untitled.obj */; };
+		040B4B40268C268D003F97F7 /* train.blend in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF082685D55E00D83955 /* train.blend */; };
+		040B4B41268C268D003F97F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
+		040B4B42268C268D003F97F7 /* untitled.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 040173792689B8190095CD43 /* untitled.mtl */; };
+		040B4B43268C268D003F97F7 /* train.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF062685D55E00D83955 /* train.mtl */; };
+		040B4B44268C268D003F97F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
+		040B4B45268C268D003F97F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
+		040B4B46268C268D003F97F7 /* mushroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF052685D55E00D83955 /* mushroom.obj */; };
+		040B4B47268C268D003F97F7 /* mushroom.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF072685D55E00D83955 /* mushroom.mtl */; };
+		040B4B54268C27E1003F97F7 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 040B4B52268C27E1003F97F7 /* Shaders.metal */; };
+		040B4B55268C27E1003F97F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B4B53268C27E1003F97F7 /* ViewController.swift */; };
 		04E7BF0A2685D55F00D83955 /* mushroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF052685D55E00D83955 /* mushroom.obj */; };
 		04E7BF0B2685D55F00D83955 /* train.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF062685D55E00D83955 /* train.mtl */; };
 		04E7BF0C2685D55F00D83955 /* mushroom.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF072685D55E00D83955 /* mushroom.mtl */; };
@@ -25,6 +38,10 @@
 /* Begin PBXFileReference section */
 		040173782689B8190095CD43 /* untitled.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = untitled.obj; sourceTree = "<group>"; };
 		040173792689B8190095CD43 /* untitled.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = untitled.mtl; sourceTree = "<group>"; };
+		040B4B4B268C268D003F97F7 /* 04_coordinate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 04_coordinate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		040B4B4C268C268D003F97F7 /* HelloMetal copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloMetal copy-Info.plist"; path = "/Users/mac/Documents/my_projects/HelloMetal/HelloMetal copy-Info.plist"; sourceTree = "<absolute>"; };
+		040B4B52268C27E1003F97F7 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		040B4B53268C27E1003F97F7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04E7BF052685D55E00D83955 /* mushroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.obj; path = "../../../../met-materials/02-3d-models/projects/resources/mushroom.obj"; sourceTree = "<group>"; };
 		04E7BF062685D55E00D83955 /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.mtl; path = "../../../../met-materials/02-3d-models/projects/resources/train.mtl"; sourceTree = "<group>"; };
 		04E7BF072685D55E00D83955 /* mushroom.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.mtl; path = "../../../../met-materials/02-3d-models/projects/resources/mushroom.mtl"; sourceTree = "<group>"; };
@@ -41,6 +58,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		040B4B3C268C268D003F97F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FD1F4A9144005CD714 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +82,15 @@
 				040173782689B8190095CD43 /* untitled.obj */,
 			);
 			path = 3dmodels;
+			sourceTree = "<group>";
+		};
+		040B4B51268C275F003F97F7 /* 04_coordinate */ = {
+			isa = PBXGroup;
+			children = (
+				040B4B52268C27E1003F97F7 /* Shaders.metal */,
+				040B4B53268C27E1003F97F7 /* ViewController.swift */,
+			);
+			path = 04_coordinate;
 			sourceTree = "<group>";
 		};
 		04E7BF042685D53200D83955 /* 02-3d-models */ = {
@@ -84,8 +117,10 @@
 		D2A5F1F71F4A9143005CD714 = {
 			isa = PBXGroup;
 			children = (
+				040B4B51268C275F003F97F7 /* 04_coordinate */,
 				D2A5F2021F4A9144005CD714 /* HelloMetal */,
 				D2A5F2011F4A9144005CD714 /* Products */,
+				040B4B4C268C268D003F97F7 /* HelloMetal copy-Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -95,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D2A5F2001F4A9144005CD714 /* HelloMetal.app */,
+				040B4B4B268C268D003F97F7 /* 04_coordinate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +153,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		040B4B37268C268D003F97F7 /* 04_coordinate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 040B4B48268C268D003F97F7 /* Build configuration list for PBXNativeTarget "04_coordinate" */;
+			buildPhases = (
+				040B4B38268C268D003F97F7 /* Sources */,
+				040B4B3C268C268D003F97F7 /* Frameworks */,
+				040B4B3D268C268D003F97F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 04_coordinate;
+			productName = MyRWTutorial;
+			productReference = 040B4B4B268C268D003F97F7 /* 04_coordinate.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D2A5F1FF1F4A9144005CD714 /* HelloMetal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2A5F2121F4A9144005CD714 /* Build configuration list for PBXNativeTarget "HelloMetal" */;
@@ -164,11 +217,29 @@
 			projectRoot = "";
 			targets = (
 				D2A5F1FF1F4A9144005CD714 /* HelloMetal */,
+				040B4B37268C268D003F97F7 /* 04_coordinate */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		040B4B3D268C268D003F97F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040B4B3E268C268D003F97F7 /* train.obj in Resources */,
+				040B4B3F268C268D003F97F7 /* untitled.obj in Resources */,
+				040B4B40268C268D003F97F7 /* train.blend in Resources */,
+				040B4B41268C268D003F97F7 /* Assets.xcassets in Resources */,
+				040B4B42268C268D003F97F7 /* untitled.mtl in Resources */,
+				040B4B43268C268D003F97F7 /* train.mtl in Resources */,
+				040B4B44268C268D003F97F7 /* LaunchScreen.storyboard in Resources */,
+				040B4B45268C268D003F97F7 /* Main.storyboard in Resources */,
+				040B4B46268C268D003F97F7 /* mushroom.obj in Resources */,
+				040B4B47268C268D003F97F7 /* mushroom.mtl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FE1F4A9144005CD714 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,6 +260,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		040B4B38268C268D003F97F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040B4B55268C27E1003F97F7 /* ViewController.swift in Sources */,
+				040B4B54268C27E1003F97F7 /* Shaders.metal in Sources */,
+				040B4B3B268C268D003F97F7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FC1F4A9144005CD714 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +294,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		040B4B49268C268D003F97F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 5UJS95K6P9;
+				INFOPLIST_FILE = "HelloMetal copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studio501.hm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		040B4B4A268C268D003F97F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 5UJS95K6P9;
+				INFOPLIST_FILE = "HelloMetal copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studio501.hm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		D2A5F2101F4A9144005CD714 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -360,6 +474,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		040B4B48268C268D003F97F7 /* Build configuration list for PBXNativeTarget "04_coordinate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				040B4B49268C268D003F97F7 /* Debug */,
+				040B4B4A268C268D003F97F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2A5F1FB1F4A9143005CD714 /* Build configuration list for PBXProject "HelloMetal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
