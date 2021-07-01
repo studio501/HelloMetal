@@ -121,29 +121,63 @@ class ViewController: UIViewController {
     renderEncoder.setRenderPipelineState(pipelineState)
     
     // drawing code here
-    var vertices: [float3] = [[0, 0, 0.5]];
+    var vertices: [float3] = [[-0.7, 0.8, 1],
+                              [-0.7,-0.4,1],
+                              [0.4,0.2,1]];
+    var martix = matrix_identity_float4x4
     let originalBuffer = device.makeBuffer(bytes: &vertices, length: MemoryLayout<float3>.stride * vertices.count, options: []);
     
     var lightGrayColor: float4 = [0.7,0.7,0.7,0.5];
     
     renderEncoder.setVertexBuffer(originalBuffer, offset: 0, index: 0)
     renderEncoder.setFragmentBytes(&lightGrayColor, length: MemoryLayout<float4>.stride, index: 0);
+    renderEncoder.setVertexBytes(&martix, length: MemoryLayout<float4x4>.stride, index: 1)
+    renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
     
-    renderEncoder.drawPrimitives(type: .point, vertexStart: 0, vertexCount: vertices.count)
     
-    var martix = matrix_identity_float4x4
-    martix.columns.3 = [0.4,-0.4,0,1]
+//    martix.columns.3 = [0.4,-0.4,0,1]
+    
+//    let scaleX: Float = 1.2
+//    let scaleY: Float = 0.5
+//    martix = float4x4([scaleX, 0, 0, 0],
+//                      [0, scaleY, 0, 0],
+//                      [0, 0, 1, 0],
+//                      [0, 0, 0, 1])
+//
+//
+    let angle: Float = Float.pi / 2.0
+//    martix = float4x4([cos(angle), -sin(angle), 0, 0],
+//                      [sin(angle), cos(angle), 0, 0],
+//                      [0, 0, 1, 0],
+//                      [0, 0, 0, 1])
+    
+    var distanceVector = float4(vertices.last!.x,
+                                vertices.last!.y,
+                                vertices.last!.z,1)
+    var translate = matrix_identity_float4x4
+    translate.columns.3 = distanceVector
+    var rotate = matrix_identity_float4x4
+    rotate.columns.0 = [cos(angle),-sin(angle),0,0]
+    rotate.columns.1 = [sin(angle),cos(angle),0,0]
+    
+    martix = translate * rotate * translate.inverse
+    
+    
+    
     //vertices[0] += [0.3,-0.4,0]
-    vertices = vertices.map {
-      let vertex = martix * float4($0,1)
-      return [vertex.x,vertex.y,vertex.z]
-    }
+//    vertices = vertices.map {
+//      let vertex = martix * float4($0,1)
+//      return [vertex.x,vertex.y,vertex.z]
+//    }
+    
+    renderEncoder.setVertexBytes(&martix, length: MemoryLayout<float4x4>.stride, index: 1)
+    
     var transBuffer = device.makeBuffer(bytes: &vertices, length: MemoryLayout<float3>.stride * vertices.count, options: [])
     
     var redColor: float4 = [1,0,0,1];
     renderEncoder.setVertexBuffer(transBuffer, offset: 0, index: 0)
     renderEncoder.setFragmentBytes(&redColor, length: MemoryLayout<float4>.stride, index: 0)
-    renderEncoder.drawPrimitives(type: .point, vertexStart: 0, vertexCount: vertices.count)
+    renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
     
     
     renderEncoder.endEncoding()
