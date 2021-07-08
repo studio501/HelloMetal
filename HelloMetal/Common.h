@@ -1,4 +1,4 @@
-/// Copyright (c) 2020 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -26,21 +26,15 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-#include <metal_stdlib>
-using namespace metal;
+#ifndef Common_h
+#define Common_h
 
-#import "Common.h"
+#import <simd/simd.h>
 
-struct VertexIn {
-  float4 position [[ attribute(0) ]];
-};
+typedef struct {
+  matrix_float4x4 modelMatrix;
+  matrix_float4x4 viewMatrix;
+  matrix_float4x4 projectionMatrix;
+} Uniforms;
 
-vertex float4 vertex_main(const VertexIn vertex_in [[ stage_in ]], constant Uniforms &uniforms [[ buffer(1) ]]) {
-  float4 position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * vertex_in.position;
-  return position;
-}
-
-fragment float4 fragment_main() {
-  return float4(0, 0, 1, 1);
-}
-
+#endif /* Common_h */

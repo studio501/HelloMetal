@@ -59,7 +59,7 @@ class ViewController: UIViewController {
   
   var timer: CADisplayLink!
   var _time: Float = 0
-
+  var _uniforms = Uniforms()
 
   
   // member function
@@ -211,7 +211,16 @@ class ViewController: UIViewController {
     timer = CADisplayLink(target: self, selector: #selector(gameloop))
     timer.add(to: RunLoop.main, forMode: .default)
 
-
+    let translation = float4x4(translation: [0,-0.3,0])
+    let rotation = float4x4(rotation: [0,Float(45).degreesToRadians,0])
+    _uniforms.modelMatrix = translation * rotation
+    _uniforms.viewMatrix = float4x4(translation: [-0.2,0,0]).inverse
+    
+    let aspect = Float(metalLayer.bounds.width) / Float(metalLayer.bounds.height)
+    
+    let projectionMatrix = float4x4(projectionFov: Float(70).degreesToRadians, near: 0.1, far: 100, aspect: aspect)
+    _uniforms.projectionMatrix = projectionMatrix
+    
   }
   
   func render() {
@@ -234,7 +243,12 @@ class ViewController: UIViewController {
     renderEncoder.setRenderPipelineState(pipelineState)
     renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
     var currentTime = 0
-    renderEncoder.setVertexBytes(&currentTime, length: MemoryLayout<Float>.stride, index: 1)
+//    _uniforms.viewMatrix = float4x4.identity()
+//    _uniforms.modelMatrix = float4x4(rotationY: sin(_time))
+    _uniforms.viewMatrix = float4x4(translation: [0,0,-3]).inverse
+    
+    renderEncoder.setVertexBytes(&_uniforms, length: MemoryLayout<Uniforms>.stride, index: 1)
+//    renderEncoder.setVertexBytes(&currentTime, length: MemoryLayout<Float>.stride, index: 1)
 //    renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6, instanceCount: 2)
     
 //    guard let submesh = mesh.submeshes.first else {
@@ -266,3 +280,18 @@ class ViewController: UIViewController {
 
 }
 
+
+extension ViewController: MTKViewDelegate{
+  func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    let aspect = Float(view.bounds.width) / Float(view.bounds.height)
+    
+    let projectionMatrix = float4x4(projectionFov: Float(70).degreesToRadians, near: 0.001, far: 100, aspect: aspect)
+    _uniforms.projectionMatrix = projectionMatrix
+  }
+  
+  func draw(in view: MTKView) {
+    
+  }
+  
+  
+}
