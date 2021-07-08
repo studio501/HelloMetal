@@ -233,7 +233,7 @@ class ViewController: UIViewController {
       .makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
     renderEncoder.setRenderPipelineState(pipelineState)
     renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-    var currentTime = sin(_time)
+    var currentTime = 0
     renderEncoder.setVertexBytes(&currentTime, length: MemoryLayout<Float>.stride, index: 1)
 //    renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6, instanceCount: 2)
     
@@ -243,7 +243,7 @@ class ViewController: UIViewController {
 //    renderEncoder.setTriangleFillMode(.lines)
 //    renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: 0)
     
-    renderEncoder.setTriangleFillMode(.lines)
+//    renderEncoder.setTriangleFillMode(.lines)
     for submesh in mesh.submeshes{
       renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
     }
