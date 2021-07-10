@@ -47,6 +47,7 @@ class Primitive{
 }
 
 class ViewController: UIViewController {
+  
   // property
   var device: MTLDevice!
   var metalLayer: CAMetalLayer!
@@ -62,6 +63,15 @@ class ViewController: UIViewController {
   var _uniforms = Uniforms()
 
   
+  override func viewDidLayoutSubviews(){
+    var view = self.metalLayer
+    let size1 = self.view.frame.size
+    let aspect = Float(size1.width) / Float(size1.height)
+    
+    let projectionMatrix = float4x4(projectionFov: Float(70).degreesToRadians, near: 0.001, far: 100, aspect: aspect)
+    _uniforms.projectionMatrix = projectionMatrix
+    
+  }
   // member function
   override func viewDidLoad(){
     super.viewDidLoad()
@@ -281,17 +291,18 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: MTKViewDelegate{
-  func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-    let aspect = Float(view.bounds.width) / Float(view.bounds.height)
-    
-    let projectionMatrix = float4x4(projectionFov: Float(70).degreesToRadians, near: 0.001, far: 100, aspect: aspect)
-    _uniforms.projectionMatrix = projectionMatrix
-  }
-  
-  func draw(in view: MTKView) {
-    
-  }
-  
-  
-}
+
+//extension ViewController: MTKViewDelegate{
+//  func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+//    let aspect = Float(view.bounds.width) / Float(view.bounds.height)
+//    
+//    let projectionMatrix = float4x4(projectionFov: Float(70).degreesToRadians, near: 0.001, far: 100, aspect: aspect)
+//    _uniforms.projectionMatrix = projectionMatrix
+//  }
+//  
+//  func draw(in view: MTKView) {
+//    
+//  }
+//  
+//  
+//}
