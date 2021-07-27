@@ -28,7 +28,14 @@
 		04E7BF0D2685D55F00D83955 /* train.blend in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF082685D55E00D83955 /* train.blend */; };
 		04E7BF0E2685D55F00D83955 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF092685D55F00D83955 /* train.obj */; };
 		0E853307269747C300703D5E /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E853306269747C300703D5E /* MathLibrary.swift */; };
+		0E8533102699354100703D5E /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85330F2699354100703D5E /* Mesh.swift */; };
+		0E92059926B05260005EC042 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E92059826B05260005EC042 /* Primitive.swift */; };
 		0EA21CAE256EA06700420F46 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0EA21CAD256EA06700420F46 /* Shaders.metal */; };
+		0EB36C9A269939610040C368 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB36C99269939610040C368 /* Model.swift */; };
+		0EB36C9E269939A60040C368 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB36C9D269939A60040C368 /* Node.swift */; };
+		0EB36CA226993CA60040C368 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB36CA126993CA60040C368 /* Renderer.swift */; };
+		0EB36CA6269F28FA0040C368 /* Submesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB36CA5269F28FA0040C368 /* Submesh.swift */; };
+		0EB36CAA269F2B890040C368 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB36CA9269F2B890040C368 /* Camera.swift */; };
 		4374F560213C0EC0006ABEA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374F55F213C0EC0006ABEA0 /* ViewController.swift */; };
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
@@ -50,7 +57,14 @@
 		04E7BF092685D55F00D83955 /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.obj; path = "../../../../met-materials/02-3d-models/projects/resources/train.obj"; sourceTree = "<group>"; };
 		0E853306269747C300703D5E /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 		0E85330A269749FB00703D5E /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		0E85330F2699354100703D5E /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
+		0E92059826B05260005EC042 /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		0EA21CAD256EA06700420F46 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		0EB36C99269939610040C368 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0EB36C9D269939A60040C368 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		0EB36CA126993CA60040C368 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		0EB36CA5269F28FA0040C368 /* Submesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Submesh.swift; sourceTree = "<group>"; };
+		0EB36CA9269F2B890040C368 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		4374F55F213C0EC0006ABEA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2A5F2001F4A9144005CD714 /* HelloMetal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMetal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,11 +168,18 @@
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				4374F55F213C0EC0006ABEA0 /* ViewController.swift */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
+				0EB36CA9269F2B890040C368 /* Camera.swift */,
+				0E92059826B05260005EC042 /* Primitive.swift */,
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
 				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
 				D2A5F20F1F4A9144005CD714 /* Info.plist */,
 				0EA21CAD256EA06700420F46 /* Shaders.metal */,
 				0E85330A269749FB00703D5E /* Common.h */,
+				0E85330F2699354100703D5E /* Mesh.swift */,
+				0EB36CA5269F28FA0040C368 /* Submesh.swift */,
+				0EB36C99269939610040C368 /* Model.swift */,
+				0EB36CA126993CA60040C368 /* Renderer.swift */,
+				0EB36C9D269939A60040C368 /* Node.swift */,
 			);
 			path = HelloMetal;
 			sourceTree = "<group>";
@@ -287,10 +308,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB36CA226993CA60040C368 /* Renderer.swift in Sources */,
 				0EA21CAE256EA06700420F46 /* Shaders.metal in Sources */,
 				4374F560213C0EC0006ABEA0 /* ViewController.swift in Sources */,
+				0E92059926B05260005EC042 /* Primitive.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
+				0EB36CA6269F28FA0040C368 /* Submesh.swift in Sources */,
+				0EB36C9A269939610040C368 /* Model.swift in Sources */,
+				0EB36CAA269F2B890040C368 /* Camera.swift in Sources */,
 				0E853307269747C300703D5E /* MathLibrary.swift in Sources */,
+				0E8533102699354100703D5E /* Mesh.swift in Sources */,
+				0EB36C9E269939A60040C368 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +426,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = HelloMetal/Common.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -450,6 +479,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = HelloMetal/Common.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

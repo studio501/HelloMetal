@@ -33,18 +33,6 @@ import Metal
 import MetalKit
 
 
-class Primitive{
-  static func makeCube(device: MTLDevice, size: Float, uiview: UIView) -> MDLMesh{
-    let allocator = MTKMeshBufferAllocator(device: device)
-    
-    let fx = size
-    let tx = fx * Float(uiview.frame.size.width)
-    let fy = tx / Float(uiview.frame.size.height)
-    
-    let mesh = MDLMesh(boxWithExtent: [fx, fy, fx], segments: [1,1,1], inwardNormals: false, geometryType: .triangles, allocator: allocator)
-    return mesh
-  }
-}
 
 class ViewController: UIViewController {
   
