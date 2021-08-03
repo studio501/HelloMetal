@@ -26,6 +26,24 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import MetalKit
+
+class ViewController: LocalViewController {
+  
+  var renderer: Renderer?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    guard let metalView = view as? MTKView else {
+      fatalError("metal view not set up in storyboard")
+    }
+    renderer = Renderer(metalView: metalView)
+    addGestureRecognizers(to: metalView)
+  }
+}
+
+
+/*
 import UIKit
 import Metal
 
@@ -277,7 +295,7 @@ class ViewController: UIViewController {
 
 
 }
-
+*/
 
 
 //extension ViewController: MTKViewDelegate{

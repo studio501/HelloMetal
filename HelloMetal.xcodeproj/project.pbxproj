@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0401737A2689B81A0095CD43 /* untitled.obj in Resources */ = {isa = PBXBuildFile; fileRef = 040173782689B8190095CD43 /* untitled.obj */; };
 		0401737B2689B81A0095CD43 /* untitled.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 040173792689B8190095CD43 /* untitled.mtl */; };
-		040B4B3B268C268D003F97F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 		040B4B3E268C268D003F97F7 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF092685D55F00D83955 /* train.obj */; };
 		040B4B3F268C268D003F97F7 /* untitled.obj in Resources */ = {isa = PBXBuildFile; fileRef = 040173782689B8190095CD43 /* untitled.obj */; };
 		040B4B40268C268D003F97F7 /* train.blend in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF082685D55E00D83955 /* train.blend */; };
@@ -30,6 +29,10 @@
 		0E853307269747C300703D5E /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E853306269747C300703D5E /* MathLibrary.swift */; };
 		0E8533102699354100703D5E /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85330F2699354100703D5E /* Mesh.swift */; };
 		0E92059926B05260005EC042 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E92059826B05260005EC042 /* Primitive.swift */; };
+		0E92059F26B83743005EC042 /* DebugLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E92059E26B83743005EC042 /* DebugLights.swift */; };
+		0E9205A326B83939005EC042 /* VertexDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9205A226B83939005EC042 /* VertexDescriptor.swift */; };
+		0E9205A726B83AC7005EC042 /* LocalClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9205A626B83AC7005EC042 /* LocalClasses.swift */; };
+		0E9205AD26B83AFB005EC042 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9205AC26B83AFB005EC042 /* ViewControllerExtension.swift */; };
 		0EA21CAE256EA06700420F46 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0EA21CAD256EA06700420F46 /* Shaders.metal */; };
 		0EB36C9A269939610040C368 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB36C99269939610040C368 /* Model.swift */; };
 		0EB36C9E269939A60040C368 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB36C9D269939A60040C368 /* Node.swift */; };
@@ -40,7 +43,6 @@
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
-		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,10 @@
 		0E85330A269749FB00703D5E /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		0E85330F2699354100703D5E /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
 		0E92059826B05260005EC042 /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
+		0E92059E26B83743005EC042 /* DebugLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLights.swift; sourceTree = "<group>"; };
+		0E9205A226B83939005EC042 /* VertexDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexDescriptor.swift; sourceTree = "<group>"; };
+		0E9205A626B83AC7005EC042 /* LocalClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalClasses.swift; sourceTree = "<group>"; };
+		0E9205AC26B83AFB005EC042 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		0EA21CAD256EA06700420F46 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		0EB36C99269939610040C368 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0EB36C9D269939A60040C368 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -71,7 +77,6 @@
 		D2A5F2081F4A9144005CD714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +170,9 @@
 			children = (
 				0E8533052697479100703D5E /* Utility */,
 				0E33620B2684DB4400D5CB21 /* resource */,
-				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				4374F55F213C0EC0006ABEA0 /* ViewController.swift */,
+				0E9205A626B83AC7005EC042 /* LocalClasses.swift */,
+				0E9205AC26B83AFB005EC042 /* ViewControllerExtension.swift */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
 				0EB36CA9269F2B890040C368 /* Camera.swift */,
 				0E92059826B05260005EC042 /* Primitive.swift */,
@@ -180,6 +186,8 @@
 				0EB36C99269939610040C368 /* Model.swift */,
 				0EB36CA126993CA60040C368 /* Renderer.swift */,
 				0EB36C9D269939A60040C368 /* Node.swift */,
+				0E9205A226B83939005EC042 /* VertexDescriptor.swift */,
+				0E92059E26B83743005EC042 /* DebugLights.swift */,
 			);
 			path = HelloMetal;
 			sourceTree = "<group>";
@@ -300,7 +308,6 @@
 			files = (
 				040B4B55268C27E1003F97F7 /* ViewController.swift in Sources */,
 				040B4B54268C27E1003F97F7 /* Shaders.metal in Sources */,
-				040B4B3B268C268D003F97F7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,12 +319,15 @@
 				0EA21CAE256EA06700420F46 /* Shaders.metal in Sources */,
 				4374F560213C0EC0006ABEA0 /* ViewController.swift in Sources */,
 				0E92059926B05260005EC042 /* Primitive.swift in Sources */,
-				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
+				0E9205A726B83AC7005EC042 /* LocalClasses.swift in Sources */,
+				0E9205A326B83939005EC042 /* VertexDescriptor.swift in Sources */,
 				0EB36CA6269F28FA0040C368 /* Submesh.swift in Sources */,
+				0E9205AD26B83AFB005EC042 /* ViewControllerExtension.swift in Sources */,
 				0EB36C9A269939610040C368 /* Model.swift in Sources */,
 				0EB36CAA269F2B890040C368 /* Camera.swift in Sources */,
 				0E853307269747C300703D5E /* MathLibrary.swift in Sources */,
 				0E8533102699354100703D5E /* Mesh.swift in Sources */,
+				0E92059F26B83743005EC042 /* DebugLights.swift in Sources */,
 				0EB36C9E269939A60040C368 /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

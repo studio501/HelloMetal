@@ -13,7 +13,7 @@
         <scene sceneID="ce5-Ti-oAs">
             <objects>
                 <viewController id="th9-cg-1hT" customClass="ViewController" customModule="HelloMetal" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tRT-Tr-Kme">
+                    <view key="view" contentMode="scaleToFill" id="tRT-Tr-Kme" customClass="MTKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
