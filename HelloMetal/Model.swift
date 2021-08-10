@@ -59,6 +59,7 @@ class Model: Node{
       
       var pipelineState: MTLRenderPipelineState
       let pipelineDescriptor = MTLRenderPipelineDescriptor()
+      pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
       pipelineDescriptor.vertexFunction = vertexFunction
       pipelineDescriptor.fragmentFunction = fragmentFunction
       let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor

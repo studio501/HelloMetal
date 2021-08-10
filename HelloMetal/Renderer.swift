@@ -36,6 +36,15 @@ class Renderer: NSObject{
   
   var uniforms = Uniforms()
   
+  let depthStencilState: MTLDepthStencilState
+  
+  static func buildDepthStencilState() -> MTLDepthStencilState? {
+    let descriptor = MTLDepthStencilDescriptor()
+    descriptor.depthCompareFunction = .less
+    descriptor.isDepthWriteEnabled = true
+    return Renderer.device.makeDepthStencilState(descriptor: descriptor)
+  }
+  
   // Camera holds view and projection matrices
   lazy var camera: Camera = {
     let camera = ArcballCamera()
@@ -65,6 +74,10 @@ class Renderer: NSObject{
       Renderer.library = device.makeDefaultLibrary()
       metalView.device = device
       
+      // give the rasterizer depth-stencil state
+      metalView.depthStencilPixelFormat = .depth32Float
+      
+      depthStencilState = Renderer.buildDepthStencilState()!
       super.init()
       metalView.clearColor = MTLClearColor(red: 1.0, green: 1.0,
                                            blue: 0.8, alpha: 1.0)
@@ -93,6 +106,7 @@ extension Renderer: MTKViewDelegate {
       commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else {
         return
     }
+    renderEncoder.setDepthStencilState(depthStencilState)
     
     uniforms.projectionMatrix = camera.projectionMatrix
     uniforms.viewMatrix = camera.viewMatrix
