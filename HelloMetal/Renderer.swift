@@ -54,6 +54,16 @@ class Renderer: NSObject{
     return camera
   }()
   
+  lazy var sunlight: Light = {
+    var light = buildDefaultLight()
+    light.position = [1, 2, -2]
+    return light
+  }()
+  
+  var lights: [Light] = []
+  
+  var fragmentUniforms = FragmentUniforms()
+  
   // Array of modles allows for rendering multiple models
   var models : [Model] = []
   
@@ -90,7 +100,21 @@ class Renderer: NSObject{
       models.append(train)
       
       mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
+      
+      lights.append(sunlight)
+      fragmentUniforms.lightCount = UInt32(lights.count)
     }
+  
+  func buildDefaultLight() -> Light{
+    var light = Light()
+    light.position = [0,0,0]
+    light.color = [1,1,1]
+    light.specularColor = [0.6,0.6,0.6]
+    light.intensity = 1
+    light.attenuation = float3(1,0,0)
+    light.type = Sunlight
+    return light
+  }
 }
 
 extension Renderer: MTKViewDelegate {
@@ -111,10 +135,13 @@ extension Renderer: MTKViewDelegate {
     uniforms.projectionMatrix = camera.projectionMatrix
     uniforms.viewMatrix = camera.viewMatrix
     
+    renderEncoder.setFragmentBytes(&lights, length: MemoryLayout<Light>.stride * lights.count, index: 2)
+    renderEncoder.setFragmentBytes(&fragmentUniforms, length: MemoryLayout<FragmentUniforms>.stride, index: 3)
     // render all the models in the array
     for model in models {
       // model matrix now comes from the Model's superclass: Node
       uniforms.modelMatrix = model.modelMatrix
+      uniforms.normalMatrix = model.modelMatrix.upperLeft
       
       renderEncoder.setVertexBytes(&uniforms,
                                    length: MemoryLayout<Uniforms>.stride, index: 1)
@@ -136,7 +163,7 @@ extension Renderer: MTKViewDelegate {
         }
       }
     }
-
+    debugLights(renderEncoder: renderEncoder, lightType: Sunlight)
     renderEncoder.endEncoding()
     guard let drawable = view.currentDrawable else {
       return
