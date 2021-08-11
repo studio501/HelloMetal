@@ -51,6 +51,11 @@ vertex VertexOut vertex_main(const VertexIn vertex_in [[ stage_in ]], constant U
 
 fragment float4 fragment_main(VertexOut in [[ stage_in ]]) {
 //  return float4(0, 0, 1, 1);
-  return float4(in.normal, 1);
+  float4 sky = float4(0.0, 0.0, 1.0, 1.0);
+  float4 earth = float4(0.0, 1.0, 0.0, 1.0);
+  float intensity = in.normal.y * 0.5 + 0.5;
+  
+  
+  return mix(earth, sky, intensity);
 }
 
