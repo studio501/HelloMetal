@@ -26,6 +26,8 @@
 		04E7BF0C2685D55F00D83955 /* mushroom.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF072685D55E00D83955 /* mushroom.mtl */; };
 		04E7BF0D2685D55F00D83955 /* train.blend in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF082685D55E00D83955 /* train.blend */; };
 		04E7BF0E2685D55F00D83955 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF092685D55F00D83955 /* train.obj */; };
+		0E830A2826CAC330002352BC /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A2626CAC330002352BC /* treefir.obj */; };
+		0E830A2926CAC330002352BC /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A2726CAC330002352BC /* treefir.mtl */; };
 		0E853307269747C300703D5E /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E853306269747C300703D5E /* MathLibrary.swift */; };
 		0E8533102699354100703D5E /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85330F2699354100703D5E /* Mesh.swift */; };
 		0E92059926B05260005EC042 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E92059826B05260005EC042 /* Primitive.swift */; };
@@ -58,6 +60,8 @@
 		04E7BF072685D55E00D83955 /* mushroom.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mushroom.mtl; path = "../../../../met-materials/02-3d-models/projects/resources/mushroom.mtl"; sourceTree = "<group>"; };
 		04E7BF082685D55E00D83955 /* train.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = train.blend; path = "../../../../met-materials/02-3d-models/projects/resources/train.blend"; sourceTree = "<group>"; };
 		04E7BF092685D55F00D83955 /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.obj; path = "../../../../met-materials/02-3d-models/projects/resources/train.obj"; sourceTree = "<group>"; };
+		0E830A2626CAC330002352BC /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
+		0E830A2726CAC330002352BC /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
 		0E853306269747C300703D5E /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 		0E85330A269749FB00703D5E /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		0E85330F2699354100703D5E /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		040173772689B7E40095CD43 /* 3dmodels */ = {
 			isa = PBXGroup;
 			children = (
+				0E830A2726CAC330002352BC /* treefir.mtl */,
+				0E830A2626CAC330002352BC /* treefir.obj */,
 				040173792689B8190095CD43 /* untitled.mtl */,
 				040173782689B8190095CD43 /* untitled.obj */,
 			);
@@ -290,7 +296,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E7BF0E2685D55F00D83955 /* train.obj in Resources */,
+				0E830A2826CAC330002352BC /* treefir.obj in Resources */,
 				0401737A2689B81A0095CD43 /* untitled.obj in Resources */,
+				0E830A2926CAC330002352BC /* treefir.mtl in Resources */,
 				04E7BF0D2685D55F00D83955 /* train.blend in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
 				0401737B2689B81A0095CD43 /* untitled.mtl in Resources */,

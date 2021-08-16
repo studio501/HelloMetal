@@ -106,6 +106,10 @@ class Renderer: NSObject{
       train.position = [0, 0, 0]
       train.rotation = [0, Float(45).degreesToRadians, 0]
       models.append(train)
+    
+      let fir = Model(name: "treefir.obj")
+      fir.position = [1.4,0,0]
+      models.append(fir)
       
       mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
       
@@ -143,6 +147,7 @@ extension Renderer: MTKViewDelegate {
     
     uniforms.projectionMatrix = camera.projectionMatrix
     uniforms.viewMatrix = camera.viewMatrix
+    fragmentUniforms.cameraPosition = camera.position
     
     renderEncoder.setFragmentBytes(&lights, length: MemoryLayout<Light>.stride * lights.count, index: 2)
     renderEncoder.setFragmentBytes(&fragmentUniforms, length: MemoryLayout<FragmentUniforms>.stride, index: 3)
