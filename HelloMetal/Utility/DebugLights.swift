@@ -61,8 +61,8 @@ extension Renderer{
                          color: light.color)
      
   //        leave this commented until you define spotlights
-  //        drawSpotLight(renderEncoder: renderEncoder, position: light.position,
-  //                      direction: light.coneDirection, color: light.color)
+          drawSpotLight(renderEncoder: renderEncoder, position: light.position,
+                        direction: light.coneDirection, color: light.color)
         case Sunlight:
           drawDirectionalLight(renderEncoder: renderEncoder, direction: light.position,
                                color: [1, 0, 0], count: 5)

@@ -54,6 +54,10 @@ typedef struct {
   float intensity;
   vector_float3 attenuation;
   LightType type;
+  //
+  float coneAngle;
+  vector_float3 coneDirection;
+  float coneAttenuation;
 } Light;
 
 typedef struct {
