@@ -57,7 +57,7 @@ fragment float4 fragment_main(VertexOut in [[ stage_in ]],
                               constant Light * lights [[buffer(2)]],
                               constant FragmentUniforms &fragmentUniforms [[buffer(3)]]) {
 //  return float4(0, 0, 1, 1);
-  float3 baseColor = float3(0,0,1);
+  float3 baseColor = float3(1,1,1);
   float3 diffuseColor = 0;
   float3 ambientColor = 0;
   
@@ -85,6 +85,15 @@ fragment float4 fragment_main(VertexOut in [[ stage_in ]],
     }
     else if(light.type == Ambientlight){
       ambientColor += light.color * light.intensity;
+    }
+    else if(light.type == Pointlight){
+      float d = distance(light.position, in.worldPosition);
+      float3 lightDirection = normalize(in.worldPosition - light.position);
+      float attenuation = 1.0 / (light.attenuation.x + light.attenuation.y * d + light.attenuation.z * d * d);
+      float diffuseIntensity = saturate(-dot(lightDirection, normalDirection));
+      float3 color = light.color * baseColor * diffuseIntensity;
+      color *= attenuation;
+      diffuseColor += color;
     }
   }
   float3 color = diffuseColor + ambientColor + specularColor;
