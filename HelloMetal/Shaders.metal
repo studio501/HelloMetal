@@ -42,7 +42,7 @@ struct VertexOut{
   float3 worldNormal;
 };
 
-vertex VertexOut vertex_main(const VertexIn vertex_in [[ stage_in ]], constant Uniforms &uniforms [[ buffer(1) ]]) {
+vertex VertexOut vertex_main(const VertexIn vertex_in [[ stage_in ]], constant Uniforms &uniforms [[ buffer(BufferIndexUniforms) ]]) {
   VertexOut out{
     .position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * vertex_in.position,
 //    .normal = vertex_in.normal
@@ -54,8 +54,8 @@ vertex VertexOut vertex_main(const VertexIn vertex_in [[ stage_in ]], constant U
 }
 
 fragment float4 fragment_main(VertexOut in [[ stage_in ]],
-                              constant Light * lights [[buffer(2)]],
-                              constant FragmentUniforms &fragmentUniforms [[buffer(3)]]) {
+                              constant Light * lights [[buffer(BufferIndexLight)]],
+                              constant FragmentUniforms &fragmentUniforms [[buffer(BufferFragUniforms)]]) {
 //  return float4(0, 0, 1, 1);
   float3 baseColor = float3(1,1,1);
   float3 diffuseColor = 0;

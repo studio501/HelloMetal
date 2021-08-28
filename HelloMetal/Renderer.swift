@@ -172,8 +172,8 @@ extension Renderer: MTKViewDelegate {
     uniforms.viewMatrix = camera.viewMatrix
     fragmentUniforms.cameraPosition = camera.position
     
-    renderEncoder.setFragmentBytes(&lights, length: MemoryLayout<Light>.stride * lights.count, index: 2)
-    renderEncoder.setFragmentBytes(&fragmentUniforms, length: MemoryLayout<FragmentUniforms>.stride, index: 3)
+    renderEncoder.setFragmentBytes(&lights, length: MemoryLayout<Light>.stride * lights.count, index: Int(BufferIndexLight.rawValue))
+    renderEncoder.setFragmentBytes(&fragmentUniforms, length: MemoryLayout<FragmentUniforms>.stride, index: Int(BufferFragUniforms.rawValue))
     // render all the models in the array
     for model in models {
       // model matrix now comes from the Model's superclass: Node
@@ -181,7 +181,7 @@ extension Renderer: MTKViewDelegate {
       uniforms.normalMatrix = model.modelMatrix.upperLeft
       
       renderEncoder.setVertexBytes(&uniforms,
-                                   length: MemoryLayout<Uniforms>.stride, index: 1)
+                                   length: MemoryLayout<Uniforms>.stride, index: Int(BufferIndexUniforms.rawValue))
       
       renderEncoder.setRenderPipelineState(model.pipelineState)
 

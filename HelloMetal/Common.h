@@ -65,4 +65,12 @@ typedef struct {
   vector_float3 cameraPosition;
 } FragmentUniforms;
 
+
+typedef enum {
+  BufferIndexVertices = 0,
+  BufferIndexUniforms = 1,
+  BufferIndexLight = 2,
+  BufferFragUniforms = 3
+} BufferIndices;
+
 #endif /* Common_h */
