@@ -28,6 +28,12 @@
 		04E7BF0E2685D55F00D83955 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 04E7BF092685D55F00D83955 /* train.obj */; };
 		0E830A2826CAC330002352BC /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A2626CAC330002352BC /* treefir.obj */; };
 		0E830A2926CAC330002352BC /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A2726CAC330002352BC /* treefir.mtl */; };
+		0E830A3226DA48AB002352BC /* lowpoly-house.blend in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A2D26DA48AB002352BC /* lowpoly-house.blend */; };
+		0E830A3326DA48AB002352BC /* lowpoly-house.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A2E26DA48AB002352BC /* lowpoly-house.obj */; };
+		0E830A3426DA48AB002352BC /* lowpoly-house-UVs.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A2F26DA48AB002352BC /* lowpoly-house-UVs.png */; };
+		0E830A3526DA48AB002352BC /* lowpoly-house-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A3026DA48AB002352BC /* lowpoly-house-color.png */; };
+		0E830A3626DA48AB002352BC /* lowpoly-house.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E830A3126DA48AB002352BC /* lowpoly-house.mtl */; };
+		0E830A3A26DA4B59002352BC /* Lighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E830A3926DA4B59002352BC /* Lighting.swift */; };
 		0E853307269747C300703D5E /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E853306269747C300703D5E /* MathLibrary.swift */; };
 		0E8533102699354100703D5E /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85330F2699354100703D5E /* Mesh.swift */; };
 		0E92059926B05260005EC042 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E92059826B05260005EC042 /* Primitive.swift */; };
@@ -62,6 +68,12 @@
 		04E7BF092685D55F00D83955 /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = train.obj; path = "../../../../met-materials/02-3d-models/projects/resources/train.obj"; sourceTree = "<group>"; };
 		0E830A2626CAC330002352BC /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
 		0E830A2726CAC330002352BC /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
+		0E830A2D26DA48AB002352BC /* lowpoly-house.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = "lowpoly-house.blend"; path = "3dmodels/LowPolyHouse/lowpoly-house.blend"; sourceTree = "<group>"; };
+		0E830A2E26DA48AB002352BC /* lowpoly-house.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "lowpoly-house.obj"; path = "3dmodels/LowPolyHouse/lowpoly-house.obj"; sourceTree = "<group>"; };
+		0E830A2F26DA48AB002352BC /* lowpoly-house-UVs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lowpoly-house-UVs.png"; path = "3dmodels/LowPolyHouse/lowpoly-house-UVs.png"; sourceTree = "<group>"; };
+		0E830A3026DA48AB002352BC /* lowpoly-house-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lowpoly-house-color.png"; path = "3dmodels/LowPolyHouse/lowpoly-house-color.png"; sourceTree = "<group>"; };
+		0E830A3126DA48AB002352BC /* lowpoly-house.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "lowpoly-house.mtl"; path = "3dmodels/LowPolyHouse/lowpoly-house.mtl"; sourceTree = "<group>"; };
+		0E830A3926DA4B59002352BC /* Lighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lighting.swift; sourceTree = "<group>"; };
 		0E853306269747C300703D5E /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 		0E85330A269749FB00703D5E /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		0E85330F2699354100703D5E /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
@@ -138,10 +150,23 @@
 		0E33620B2684DB4400D5CB21 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				0E830A2C26DA483C002352BC /* LowPolyHouse */,
 				040173772689B7E40095CD43 /* 3dmodels */,
 				04E7BF042685D53200D83955 /* 02-3d-models */,
 			);
 			path = resource;
+			sourceTree = "<group>";
+		};
+		0E830A2C26DA483C002352BC /* LowPolyHouse */ = {
+			isa = PBXGroup;
+			children = (
+				0E830A3026DA48AB002352BC /* lowpoly-house-color.png */,
+				0E830A2F26DA48AB002352BC /* lowpoly-house-UVs.png */,
+				0E830A2D26DA48AB002352BC /* lowpoly-house.blend */,
+				0E830A3126DA48AB002352BC /* lowpoly-house.mtl */,
+				0E830A2E26DA48AB002352BC /* lowpoly-house.obj */,
+			);
+			name = LowPolyHouse;
 			sourceTree = "<group>";
 		};
 		0E8533052697479100703D5E /* Utility */ = {
@@ -197,6 +222,7 @@
 				0EB36CA126993CA60040C368 /* Renderer.swift */,
 				0EB36C9D269939A60040C368 /* Node.swift */,
 				0E9205A226B83939005EC042 /* VertexDescriptor.swift */,
+				0E830A3926DA4B59002352BC /* Lighting.swift */,
 			);
 			path = HelloMetal;
 			sourceTree = "<group>";
@@ -301,12 +327,17 @@
 				0E830A2926CAC330002352BC /* treefir.mtl in Resources */,
 				04E7BF0D2685D55F00D83955 /* train.blend in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
+				0E830A3226DA48AB002352BC /* lowpoly-house.blend in Resources */,
 				0401737B2689B81A0095CD43 /* untitled.mtl in Resources */,
 				04E7BF0B2685D55F00D83955 /* train.mtl in Resources */,
 				5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */,
 				D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */,
+				0E830A3626DA48AB002352BC /* lowpoly-house.mtl in Resources */,
+				0E830A3326DA48AB002352BC /* lowpoly-house.obj in Resources */,
 				04E7BF0A2685D55F00D83955 /* mushroom.obj in Resources */,
+				0E830A3526DA48AB002352BC /* lowpoly-house-color.png in Resources */,
 				04E7BF0C2685D55F00D83955 /* mushroom.mtl in Resources */,
+				0E830A3426DA48AB002352BC /* lowpoly-house-UVs.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +372,7 @@
 				0E8533102699354100703D5E /* Mesh.swift in Sources */,
 				0E92059F26B83743005EC042 /* DebugLights.swift in Sources */,
 				0EB36C9E269939A60040C368 /* Node.swift in Sources */,
+				0E830A3A26DA4B59002352BC /* Lighting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

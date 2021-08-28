@@ -30,7 +30,7 @@ import Foundation
 
 class Camera: Node{
   
-  var fovDegrees: Float = 100
+  var fovDegrees: Float = 70
   var fovRadians: Float {
     return fovDegrees.degreesToRadians
   }

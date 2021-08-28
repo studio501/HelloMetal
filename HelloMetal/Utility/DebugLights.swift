@@ -51,7 +51,7 @@ extension Renderer{
   // uncomment when you have defined `lights`
 
     func debugLights(renderEncoder: MTLRenderCommandEncoder, lightType: LightType) {
-      for light in lights where light.type == lightType {
+      /*for light in lights where light.type == lightType {
         switch light.type {
         case Pointlight:
           drawPointLight(renderEncoder: renderEncoder, position: light.position,
@@ -69,7 +69,7 @@ extension Renderer{
         default:
           break
         }
-      }
+      }*/
     }
 
   

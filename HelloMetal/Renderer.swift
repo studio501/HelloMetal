@@ -44,12 +44,13 @@ class Renderer: NSObject{
     descriptor.isDepthWriteEnabled = true
     return Renderer.device.makeDepthStencilState(descriptor: descriptor)
   }
+  let lighting = Lighting()
   
   // Camera holds view and projection matrices
   lazy var camera: Camera = {
     let camera = ArcballCamera()
-    camera.distance = 2
-    camera.target = [0, 0.5, 0]
+    camera.distance = 4.3
+    camera.target = [0, 1.2, 0]
     camera.rotation.x = Float(-10).degreesToRadians
     return camera
   }()
@@ -89,7 +90,7 @@ class Renderer: NSObject{
     return ligth
   }()
   
-  var lights: [Light] = []
+//  var lights: [Light] = []
   
   var fragmentUniforms = FragmentUniforms()
   
@@ -103,43 +104,49 @@ class Renderer: NSObject{
   
   
   init(metalView: MTKView) {
-      guard
-        let device = MTLCreateSystemDefaultDevice(),
-        let commandQueue = device.makeCommandQueue() else {
-          fatalError("GPU not available")
-      }
-      Renderer.device = device
-      Renderer.commandQueue = commandQueue
-      Renderer.library = device.makeDefaultLibrary()
-      metalView.device = device
-      
-      // give the rasterizer depth-stencil state
-      metalView.depthStencilPixelFormat = .depth32Float
-      
-      depthStencilState = Renderer.buildDepthStencilState()!
-      super.init()
-      metalView.clearColor = MTLClearColor(red: 1.0, green: 1.0,
-                                           blue: 0.8, alpha: 1.0)
-      metalView.delegate = self
-      
-      // add the model to the scene
-      let train = Model(name: "train.obj")
-      train.position = [0, 0, 0]
-      train.rotation = [0, Float(45).degreesToRadians, 0]
-      models.append(train)
-    
-      let fir = Model(name: "treefir.obj")
-      fir.position = [1.4,0,0]
-      models.append(fir)
-      
-      mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
-      
-      lights.append(sunlight)
-      lights.append(ambientLight)
-      lights.append(redLight)
-      lights.append(spotlight)
-      fragmentUniforms.lightCount = UInt32(lights.count)
+    guard
+      let device = MTLCreateSystemDefaultDevice(),
+      let commandQueue = device.makeCommandQueue() else {
+        fatalError("GPU not available")
     }
+    Renderer.device = device
+    Renderer.commandQueue = commandQueue
+    Renderer.library = device.makeDefaultLibrary()
+    metalView.device = device
+    
+    // give the rasterizer depth-stencil state
+    metalView.depthStencilPixelFormat = .depth32Float
+    
+    depthStencilState = Renderer.buildDepthStencilState()!
+    super.init()
+    metalView.clearColor = MTLClearColor(red: 0.7, green: 0.9,
+                                         blue: 1.0, alpha: 1)
+    metalView.delegate = self
+    
+    // add the model to the scene
+    let house = Model(name: "lowpoly-house.obj")
+    house.position = [0,0,0]
+    house.rotation = [0, Float(35).degreesToRadians,0]
+    models.append(house)
+    
+//    let train = Model(name: "train.obj")
+//    train.position = [0, 0, 0]
+//    train.rotation = [0, Float(45).degreesToRadians, 0]
+//    models.append(train)
+//
+//    let fir = Model(name: "treefir.obj")
+//    fir.position = [1.4,0,0]
+//    models.append(fir)
+    
+    mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
+    
+//    lights.append(sunlight)
+//    lights.append(ambientLight)
+//    lights.append(redLight)
+//    lights.append(spotlight)
+    
+    fragmentUniforms.lightCount = UInt32(lighting.count)
+  }
   
   func buildDefaultLight() -> Light{
     var light = Light()
@@ -172,6 +179,7 @@ extension Renderer: MTKViewDelegate {
     uniforms.viewMatrix = camera.viewMatrix
     fragmentUniforms.cameraPosition = camera.position
     
+    var lights = lighting.lights
     renderEncoder.setFragmentBytes(&lights, length: MemoryLayout<Light>.stride * lights.count, index: Int(BufferIndexLight.rawValue))
     renderEncoder.setFragmentBytes(&fragmentUniforms, length: MemoryLayout<FragmentUniforms>.stride, index: Int(BufferFragUniforms.rawValue))
     // render all the models in the array
@@ -200,9 +208,9 @@ extension Renderer: MTKViewDelegate {
         }
       }
     }
-    debugLights(renderEncoder: renderEncoder, lightType: Sunlight)
-    debugLights(renderEncoder: renderEncoder, lightType: Pointlight)
-    debugLights(renderEncoder: renderEncoder, lightType: Spotlight)
+//    debugLights(renderEncoder: renderEncoder, lightType: Sunlight)
+//    debugLights(renderEncoder: renderEncoder, lightType: Pointlight)
+//    debugLights(renderEncoder: renderEncoder, lightType: Spotlight)
     renderEncoder.endEncoding()
     guard let drawable = view.currentDrawable else {
       return
