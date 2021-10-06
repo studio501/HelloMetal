@@ -26,62 +26,33 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-#ifndef Common_h
-#define Common_h
+import MetalKit
 
-#import <simd/simd.h>
+protocol Textureable {}
 
-typedef enum {
-  Position = 0,
-  Normal = 1,
-  UV = 2
-} Attributes;
-
-typedef struct {
-  matrix_float4x4 modelMatrix;
-  matrix_float4x4 viewMatrix;
-  matrix_float4x4 projectionMatrix;
-  matrix_float3x3 normalMatrix;
-} Uniforms;
-
-typedef enum {
-  unused = 0,
-  Sunlight = 1,
-  Spotlight = 2,
-  Pointlight = 3,
-  Ambientlight = 4
-} LightType;
-
-
-typedef struct {
-  vector_float3 position;
-  vector_float3 color;
-  vector_float3 specularColor;
-  float intensity;
-  vector_float3 attenuation;
-  LightType type;
-  //
-  float coneAngle;
-  vector_float3 coneDirection;
-  float coneAttenuation;
-} Light;
-
-typedef struct {
-  uint lightCount;
-  vector_float3 cameraPosition;
-} FragmentUniforms;
-
-
-typedef enum {
-  BufferIndexVertices = 0,
-  BufferIndexUniforms = 1,
-  BufferIndexLight = 2,
-  BufferFragUniforms = 3
-} BufferIndices;
-
-
-typedef enum {
-  BaseColorTexture = 0,
-} Textures;
-
-#endif /* Common_h */
+extension Textureable {
+  
+  static func loadTexture(imageName: String) throws -> MTLTexture? {
+    
+    // 1
+    let textureLoader = MTKTextureLoader(device: Renderer.device)
+    
+    // 2
+    let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [.origin: MTKTextureLoader.Origin.bottomLeft]
+    
+    // 3
+    let fileExtension = URL(fileURLWithPath: imageName).pathExtension.isEmpty ? "png" : nil
+    
+    // 4
+    guard let url = Bundle.main.url(forResource: imageName, withExtension: fileExtension) else {
+      print("Failed to load \(imageName)")
+      return nil
+    }
+    
+    let texture = try textureLoader.newTexture(URL: url, options: textureLoaderOptions)
+    
+    print("loaded texture: \(url.lastPathComponent)")
+    
+    return texture
+  }
+}

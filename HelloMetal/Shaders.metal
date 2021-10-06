@@ -32,14 +32,16 @@ using namespace metal;
 #import "Common.h"
 
 struct VertexIn {
-  float4 position [[ attribute(0) ]];
-  float3 normal [[ attribute(1) ]];
+  float4 position [[ attribute(Position) ]];
+  float3 normal [[ attribute(Normal) ]];
+  float2 uv [[attribute(UV)]];
 };
 
 struct VertexOut{
   float4 position [[position]];
   float3 worldPosition;
   float3 worldNormal;
+  float2 uv;
 };
 
 vertex VertexOut vertex_main(const VertexIn vertex_in [[ stage_in ]], constant Uniforms &uniforms [[ buffer(BufferIndexUniforms) ]]) {
@@ -47,17 +49,21 @@ vertex VertexOut vertex_main(const VertexIn vertex_in [[ stage_in ]], constant U
     .position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * vertex_in.position,
 //    .normal = vertex_in.normal
     .worldPosition = (uniforms.modelMatrix * vertex_in.position).xyz,
-    .worldNormal = uniforms.normalMatrix * vertex_in.normal
-    
+    .worldNormal = uniforms.normalMatrix * vertex_in.normal,
+    .uv = vertex_in.uv
   };
   return out;
 }
 
 fragment float4 fragment_main(VertexOut in [[ stage_in ]],
+                              texture2d<float> baseColorTexture [[texture(BaseColorTexture)]],
                               constant Light * lights [[buffer(BufferIndexLight)]],
                               constant FragmentUniforms &fragmentUniforms [[buffer(BufferFragUniforms)]]) {
 //  return float4(0, 0, 1, 1);
-  float3 baseColor = float3(1,1,1);
+  constexpr sampler textureSampler;
+  float3 baseColor = baseColorTexture.sample(textureSampler, in.uv).rgb;
+  return float4(baseColor, 1);
+  // float3(1,1,1);
   float3 diffuseColor = 0;
   float3 ambientColor = 0;
   

@@ -200,6 +200,10 @@ extension Renderer: MTKViewDelegate {
 
         for submesh in mesh.submeshes {
           let mtkSubmesh = submesh.mtkSubmesh
+          // set the fragment tecture here:
+          // Buffers, textures and sampler states are held in argument tables and, as you’ve seen, you access them by index numbers
+          renderEncoder.setFragmentTexture(submesh.textures.baseColor, index: Int(BaseColorTexture.rawValue))
+          
           renderEncoder.drawIndexedPrimitives(type: .triangle,
                                               indexCount: mtkSubmesh.indexCount,
                                               indexType: mtkSubmesh.indexType,

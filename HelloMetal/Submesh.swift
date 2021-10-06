@@ -29,9 +29,30 @@
 import MetalKit
 
 class Submesh {
+  struct Textures {
+    let baseColor: MTLTexture?
+  }
+  let textures: Textures
   var mtkSubmesh: MTKSubmesh
   
   init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh){
     self.mtkSubmesh = mtkSubmesh
+    textures = Textures(material: mdlSubmesh.material)
+  }
+}
+
+extension Submesh: Textureable {}
+
+private extension Submesh.Textures {
+  init(material: MDLMaterial?){
+    func property(with semantic: MDLMaterialSemantic) -> MTLTexture?{
+      guard let propery = material?.property(with: semantic),
+            propery.type == .string,
+            let filename = propery.stringValue,
+            let texture = try? Submesh.loadTexture(imageName: filename)
+      else { return nil }
+      return texture
+    }
+    baseColor = property(with: MDLMaterialSemantic.baseColor)
   }
 }
